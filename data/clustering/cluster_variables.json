@@ -1,0 +1,255 @@
+[
+    {
+        "cluster":0,
+        "n_users":54,
+        "feature_importance":{
+            "desarrollo_profesional_diff":0.5236438369,
+            "ciudadania_digital_diff":0.2365759769,
+            "pedagogia_diff":0.195373269,
+            "gender":0.0184624546,
+            "n_courses_escuela_innovacion":0.0104188065,
+            "n_courses_escuela_digital":0.0082795528,
+            "n_courses_escuela_pensamiento":0.0038111768,
+            "n_courses_escuela_formadores":0.0034349265,
+            "n_courses_escuela_alfabetizaciones":0.0,
+            "n_courses_escuela_ciudadania":0.0,
+            "n_courses_escuela_matematicas":0.0
+        },
+        "rules":{
+            "rule_0":[
+                "desarrollo_profesional_diff <= -0.625",
+                "pedagogia_diff <= 1.375"
+            ],
+            "rule_1":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff <= -0.375",
+                "pedagogia_diff <= -0.25"
+            ],
+            "rule_2":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff <= -0.375",
+                "pedagogia_diff > -0.25",
+                "ciudadania_digital_diff <= -1.125"
+            ],
+            "rule_3":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff <= -0.375",
+                "pedagogia_diff > -0.25",
+                "ciudadania_digital_diff > -1.125",
+                "pedagogia_diff <= 0.125",
+                "ciudadania_digital_diff <= -0.625"
+            ],
+            "rule_4":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff > -0.375",
+                "ciudadania_digital_diff <= 1.375",
+                "pedagogia_diff <= 1.625",
+                "pedagogia_diff <= -0.375",
+                "ciudadania_digital_diff <= 0.125"
+            ]
+        },
+        "categorical_variables":{
+            "gender":[
+                "man",
+                "woman",
+                "iprefernottosay",
+                null
+            ]
+        },
+        "numerical_variables":{
+            "pedagogia_diff_mean":-0.662037037,
+            "pedagogia_diff_std":0.6403800366,
+            "n_courses_escuela_matematicas_mean":0.0185185185,
+            "n_courses_escuela_matematicas_std":0.1348168498,
+            "n_courses_escuela_digital_mean":0.0185185185,
+            "n_courses_escuela_digital_std":0.1348168498,
+            "n_courses_escuela_formadores_mean":0.0185185185,
+            "n_courses_escuela_formadores_std":0.1348168498,
+            "ciudadania_digital_diff_mean":-0.7175925926,
+            "ciudadania_digital_diff_std":0.8179783914,
+            "n_courses_escuela_pensamiento_mean":0.037037037,
+            "n_courses_escuela_pensamiento_std":0.1888525746,
+            "desarrollo_profesional_diff_mean":-1.0185185185,
+            "desarrollo_profesional_diff_std":0.6936415111,
+            "n_courses_escuela_innovacion_mean":0.1111111111,
+            "n_courses_escuela_innovacion_std":0.3142696805
+        }
+    },
+    {
+        "cluster":1,
+        "n_users":43,
+        "feature_importance":{
+            "ciudadania_digital_diff":0.3557297583,
+            "desarrollo_profesional_diff":0.3193368109,
+            "pedagogia_diff":0.2861882511,
+            "gender":0.0178030081,
+            "n_courses_escuela_innovacion":0.0083837551,
+            "n_courses_escuela_digital":0.0067984236,
+            "n_courses_escuela_pensamiento":0.0049855246,
+            "n_courses_escuela_formadores":0.000661583,
+            "n_courses_escuela_matematicas":0.0001128854,
+            "n_courses_escuela_alfabetizaciones":0.0,
+            "n_courses_escuela_ciudadania":0.0
+        },
+        "rules":{
+            "rule_0":[
+                "desarrollo_profesional_diff <= -0.625",
+                "pedagogia_diff > 1.375"
+            ],
+            "rule_1":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff > -0.375",
+                "ciudadania_digital_diff <= 1.375",
+                "pedagogia_diff > 1.625"
+            ],
+            "rule_2":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff > -0.375",
+                "ciudadania_digital_diff > 1.375",
+                "desarrollo_profesional_diff > 0.25"
+            ],
+            "rule_3":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff > 1.125",
+                "ciudadania_digital_diff <= 0.875",
+                "pedagogia_diff > 0.875"
+            ],
+            "rule_4":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff > 1.125",
+                "ciudadania_digital_diff > 0.875",
+                "pedagogia_diff > -0.25"
+            ]
+        },
+        "categorical_variables":{
+            "gender":[
+                "man",
+                "woman",
+                "iprefernottosay",
+                null
+            ]
+        },
+        "numerical_variables":{
+            "pedagogia_diff_mean":1.476744186,
+            "pedagogia_diff_std":0.5827310239,
+            "n_courses_escuela_matematicas_mean":0.0,
+            "n_courses_escuela_matematicas_std":0.0,
+            "n_courses_escuela_digital_mean":0.023255814,
+            "n_courses_escuela_digital_std":0.1507149,
+            "n_courses_escuela_formadores_mean":0.0,
+            "n_courses_escuela_formadores_std":0.0,
+            "ciudadania_digital_diff_mean":1.7674418605,
+            "ciudadania_digital_diff_std":0.571603591,
+            "n_courses_escuela_pensamiento_mean":0.0,
+            "n_courses_escuela_pensamiento_std":0.0,
+            "desarrollo_profesional_diff_mean":1.4593023256,
+            "desarrollo_profesional_diff_std":0.6754202666,
+            "n_courses_escuela_innovacion_mean":0.0465116279,
+            "n_courses_escuela_innovacion_std":0.210590352
+        }
+    },
+    {
+        "cluster":2,
+        "n_users":131,
+        "feature_importance":{
+            "desarrollo_profesional_diff":0.4010798375,
+            "ciudadania_digital_diff":0.3269825683,
+            "pedagogia_diff":0.2298924096,
+            "gender":0.0241878619,
+            "n_courses_escuela_innovacion":0.0062412726,
+            "n_courses_escuela_digital":0.0046194006,
+            "n_courses_escuela_pensamiento":0.0028339733,
+            "n_courses_escuela_formadores":0.0028179694,
+            "n_courses_escuela_matematicas":0.0013447068,
+            "n_courses_escuela_alfabetizaciones":0.0,
+            "n_courses_escuela_ciudadania":0.0
+        },
+        "rules":{
+            "rule_0":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff <= -0.375",
+                "pedagogia_diff > -0.25",
+                "ciudadania_digital_diff > -1.125",
+                "pedagogia_diff <= 0.125",
+                "ciudadania_digital_diff > -0.625"
+            ],
+            "rule_1":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff <= -0.375",
+                "pedagogia_diff > -0.25",
+                "ciudadania_digital_diff > -1.125",
+                "pedagogia_diff > 0.125"
+            ],
+            "rule_2":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff > -0.375",
+                "ciudadania_digital_diff <= 1.375",
+                "pedagogia_diff <= 1.625",
+                "pedagogia_diff <= -0.375",
+                "ciudadania_digital_diff > 0.125"
+            ],
+            "rule_3":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff > -0.375",
+                "ciudadania_digital_diff <= 1.375",
+                "pedagogia_diff <= 1.625",
+                "pedagogia_diff > -0.375"
+            ],
+            "rule_4":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff <= 1.125",
+                "ciudadania_digital_diff > -0.375",
+                "ciudadania_digital_diff > 1.375",
+                "desarrollo_profesional_diff <= 0.25"
+            ],
+            "rule_5":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff > 1.125",
+                "ciudadania_digital_diff <= 0.875",
+                "pedagogia_diff <= 0.875"
+            ],
+            "rule_6":[
+                "desarrollo_profesional_diff > -0.625",
+                "desarrollo_profesional_diff > 1.125",
+                "ciudadania_digital_diff > 0.875",
+                "pedagogia_diff <= -0.25"
+            ]
+        },
+        "categorical_variables":{
+            "gender":[
+                "man",
+                "woman",
+                "iprefernottosay",
+                null
+            ]
+        },
+        "numerical_variables":{
+            "pedagogia_diff_mean":0.3530534351,
+            "pedagogia_diff_std":0.5669577217,
+            "n_courses_escuela_matematicas_mean":0.0,
+            "n_courses_escuela_matematicas_std":0.0,
+            "n_courses_escuela_digital_mean":0.0534351145,
+            "n_courses_escuela_digital_std":0.2248995399,
+            "n_courses_escuela_formadores_mean":0.0152671756,
+            "n_courses_escuela_formadores_std":0.1226135756,
+            "ciudadania_digital_diff_mean":0.3339694656,
+            "ciudadania_digital_diff_std":0.5311038187,
+            "n_courses_escuela_pensamiento_mean":0.0305343511,
+            "n_courses_escuela_pensamiento_std":0.1720523308,
+            "desarrollo_profesional_diff_mean":0.3854961832,
+            "desarrollo_profesional_diff_std":0.4983364904,
+            "n_courses_escuela_innovacion_mean":0.1145038168,
+            "n_courses_escuela_innovacion_std":0.3184221926
+        }
+    }
+]

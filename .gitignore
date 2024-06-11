@@ -1,0 +1,10 @@
+# Ignorar todo dentro de la carpeta data
+data/**
+
+# Pero no ignorar la carpeta clustering
+!data/clustering
+!data/clustering/**
+
+# Ignorar otras carpetas
+.idea/
+.venv/
