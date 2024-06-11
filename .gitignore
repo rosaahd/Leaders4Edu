@@ -8,3 +8,7 @@ data/**
 # Ignorar otras carpetas
 .idea/
 .venv/
+
+# Ignorar archivos que contengan claves
+/tfg-rosa-firebase-adminsdk-85p5h-47a80e26da.json
+
