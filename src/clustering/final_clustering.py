@@ -187,7 +187,7 @@ class DataPreprocessor:
                 ].nunique()  # Get the number of unique values in the column
 
                 if (
-                    unique_values >= 2
+                    unique_values >= 3
                 ):  # If the number of unique values is greater than 3, perform one-hot encoding
                     self.label_encode_column(col)
                 else:  # Else, perform label encoding

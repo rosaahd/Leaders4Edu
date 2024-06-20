@@ -18,7 +18,7 @@
         "rules":{
             "rule_0":[
                 "desarrollo_profesional_diff <= -0.625",
-                "pedagogia_diff <= 1.375"
+                "ciudadania_digital_diff <= 1.375"
             ],
             "rule_1":[
                 "desarrollo_profesional_diff > -0.625",
@@ -40,7 +40,7 @@
                 "pedagogia_diff > -0.25",
                 "ciudadania_digital_diff > -1.125",
                 "pedagogia_diff <= 0.125",
-                "ciudadania_digital_diff <= -0.625"
+                "desarrollo_profesional_diff <= 0.0"
             ],
             "rule_4":[
                 "desarrollo_profesional_diff > -0.625",
@@ -61,22 +61,22 @@
             ]
         },
         "numerical_variables":{
-            "ciudadania_digital_diff_mean":-0.7175925926,
-            "ciudadania_digital_diff_std":0.8179783914,
-            "n_courses_escuela_innovacion_mean":0.1111111111,
-            "n_courses_escuela_innovacion_std":0.3142696805,
-            "desarrollo_profesional_diff_mean":-1.0185185185,
-            "desarrollo_profesional_diff_std":0.6936415111,
-            "pedagogia_diff_mean":-0.662037037,
-            "pedagogia_diff_std":0.6403800366,
-            "n_courses_escuela_pensamiento_mean":0.037037037,
-            "n_courses_escuela_pensamiento_std":0.1888525746,
             "n_courses_escuela_digital_mean":0.0185185185,
             "n_courses_escuela_digital_std":0.1348168498,
             "n_courses_escuela_formadores_mean":0.0185185185,
             "n_courses_escuela_formadores_std":0.1348168498,
+            "n_courses_escuela_pensamiento_mean":0.037037037,
+            "n_courses_escuela_pensamiento_std":0.1888525746,
             "n_courses_escuela_matematicas_mean":0.0185185185,
-            "n_courses_escuela_matematicas_std":0.1348168498
+            "n_courses_escuela_matematicas_std":0.1348168498,
+            "ciudadania_digital_diff_mean":-0.7175925926,
+            "ciudadania_digital_diff_std":0.8179783914,
+            "n_courses_escuela_innovacion_mean":0.1111111111,
+            "n_courses_escuela_innovacion_std":0.3142696805,
+            "pedagogia_diff_mean":-0.662037037,
+            "pedagogia_diff_std":0.6403800366,
+            "desarrollo_profesional_diff_mean":-1.0185185185,
+            "desarrollo_profesional_diff_std":0.6936415111
         }
     },
     {
@@ -98,7 +98,7 @@
         "rules":{
             "rule_0":[
                 "desarrollo_profesional_diff <= -0.625",
-                "pedagogia_diff > 1.375"
+                "ciudadania_digital_diff > 1.375"
             ],
             "rule_1":[
                 "desarrollo_profesional_diff > -0.625",
@@ -136,22 +136,22 @@
             ]
         },
         "numerical_variables":{
-            "ciudadania_digital_diff_mean":1.7674418605,
-            "ciudadania_digital_diff_std":0.571603591,
-            "n_courses_escuela_innovacion_mean":0.0465116279,
-            "n_courses_escuela_innovacion_std":0.210590352,
-            "desarrollo_profesional_diff_mean":1.4593023256,
-            "desarrollo_profesional_diff_std":0.6754202666,
-            "pedagogia_diff_mean":1.476744186,
-            "pedagogia_diff_std":0.5827310239,
-            "n_courses_escuela_pensamiento_mean":0.0,
-            "n_courses_escuela_pensamiento_std":0.0,
             "n_courses_escuela_digital_mean":0.023255814,
             "n_courses_escuela_digital_std":0.1507149,
             "n_courses_escuela_formadores_mean":0.0,
             "n_courses_escuela_formadores_std":0.0,
+            "n_courses_escuela_pensamiento_mean":0.0,
+            "n_courses_escuela_pensamiento_std":0.0,
             "n_courses_escuela_matematicas_mean":0.0,
-            "n_courses_escuela_matematicas_std":0.0
+            "n_courses_escuela_matematicas_std":0.0,
+            "ciudadania_digital_diff_mean":1.7674418605,
+            "ciudadania_digital_diff_std":0.571603591,
+            "n_courses_escuela_innovacion_mean":0.0465116279,
+            "n_courses_escuela_innovacion_std":0.210590352,
+            "pedagogia_diff_mean":1.476744186,
+            "pedagogia_diff_std":0.5827310239,
+            "desarrollo_profesional_diff_mean":1.4593023256,
+            "desarrollo_profesional_diff_std":0.6754202666
         }
     },
     {
@@ -178,7 +178,7 @@
                 "pedagogia_diff > -0.25",
                 "ciudadania_digital_diff > -1.125",
                 "pedagogia_diff <= 0.125",
-                "ciudadania_digital_diff > -0.625"
+                "desarrollo_profesional_diff > 0.0"
             ],
             "rule_1":[
                 "desarrollo_profesional_diff > -0.625",
@@ -234,22 +234,22 @@
             ]
         },
         "numerical_variables":{
-            "ciudadania_digital_diff_mean":0.3339694656,
-            "ciudadania_digital_diff_std":0.5311038187,
-            "n_courses_escuela_innovacion_mean":0.1145038168,
-            "n_courses_escuela_innovacion_std":0.3184221926,
-            "desarrollo_profesional_diff_mean":0.3854961832,
-            "desarrollo_profesional_diff_std":0.4983364904,
-            "pedagogia_diff_mean":0.3530534351,
-            "pedagogia_diff_std":0.5669577217,
-            "n_courses_escuela_pensamiento_mean":0.0305343511,
-            "n_courses_escuela_pensamiento_std":0.1720523308,
             "n_courses_escuela_digital_mean":0.0534351145,
             "n_courses_escuela_digital_std":0.2248995399,
             "n_courses_escuela_formadores_mean":0.0152671756,
             "n_courses_escuela_formadores_std":0.1226135756,
+            "n_courses_escuela_pensamiento_mean":0.0305343511,
+            "n_courses_escuela_pensamiento_std":0.1720523308,
             "n_courses_escuela_matematicas_mean":0.0,
-            "n_courses_escuela_matematicas_std":0.0
+            "n_courses_escuela_matematicas_std":0.0,
+            "ciudadania_digital_diff_mean":0.3339694656,
+            "ciudadania_digital_diff_std":0.5311038187,
+            "n_courses_escuela_innovacion_mean":0.1145038168,
+            "n_courses_escuela_innovacion_std":0.3184221926,
+            "pedagogia_diff_mean":0.3530534351,
+            "pedagogia_diff_std":0.5669577217,
+            "desarrollo_profesional_diff_mean":0.3854961832,
+            "desarrollo_profesional_diff_std":0.4983364904
         }
     }
 ]
