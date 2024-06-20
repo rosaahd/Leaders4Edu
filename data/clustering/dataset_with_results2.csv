@@ -43,7 +43,7 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 398463,woman,-0.75,0.25,0.5,0,0,0,0,0,0,0,2,Rule 2,Napo,EC
 94146,iprefernottosay,0.0,0.0,0.0,0,0,1,0,0,0,0,2,Rule 3,Otavalo,CL
 213766,woman,0.25,1.25,-0.5,0,0,0,0,0,0,1,2,Rule 3,Guayaquil,EC
-830656,,1.5,2.75,1.25,0,0,0,0,0,0,0,1,Rule 4,México,MX
+830656,,1.5,2.75,1.25,0,0,0,0,0,0,0,1,Rule 4,,
 131162,woman,0.5,1.5,1.25,0,0,0,0,0,0,0,1,Rule 4,Ciudad de México,MX
 97589,woman,1.25,1.25,1.75,0,0,0,0,0,0,0,1,Rule 4,Ciudad de México,MX
 89024,woman,0.5,0.5,0.25,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
@@ -58,13 +58,13 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 627977,man,0.75,1.0,0.25,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 88915,woman,0.75,0.25,0.0,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 119404,man,1.25,0.5,0.75,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
-622541,woman,2.75,3.25,3.0,0,0,0,0,0,0,0,1,Rule 4,México,MX
+622541,,2.75,3.25,3.0,0,0,0,0,0,0,0,1,Rule 4,,
 159865,woman,0.0,0.25,-0.25,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 212687,woman,2.25,2.25,2.0,0,0,0,0,0,0,0,1,Rule 4,Distrito Federal,MX
 119548,man,2.0,3.0,2.25,0,0,0,0,0,0,0,1,Rule 4,Ciudad de México,MX
 188125,woman,1.0,-0.75,0.75,0,0,0,0,0,0,0,2,Rule 1,Ciudad de México,MX
 625500,man,-0.25,0.25,0.25,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
-14081,,0.0,-0.5,0.25,0,0,0,0,0,0,0,2,Rule 0,México,MX
+14081,,0.0,-0.5,0.25,0,0,0,0,0,0,0,2,Rule 0,,
 11689,woman,1.75,1.25,0.0,0,0,0,0,0,0,0,1,Rule 1,Ciudad de México,MX
 180044,man,1.75,1.75,2.0,0,0,0,0,0,0,0,1,Rule 4,Ciudad de México,MX
 210947,woman,1.25,0.5,0.5,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
@@ -99,14 +99,14 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 54803,woman,0.0,0.75,0.5,0,0,0,0,0,0,0,2,Rule 3,"Yucatán, Mérida",MX
 54812,woman,0.25,0.0,-0.5,0,0,0,0,0,0,0,2,Rule 3,Mérida,MX
 131213,woman,0.5,0.5,0.75,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
-88973,,-0.25,1.25,0.25,0,0,0,0,0,0,0,2,Rule 3,México,MX
+88973,,-0.25,1.25,0.25,0,0,0,0,0,0,0,2,Rule 3,,
 59593,woman,1.75,1.75,1.5,0,0,0,0,0,0,0,1,Rule 4,Ciudad de México,MX
 513258,man,1.5,0.5,0.5,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 59617,man,-0.25,-1.0,-0.5,0,0,0,0,0,0,0,0,Rule 1,Ciudad de México,MX
 187660,man,1.25,2.0,2.0,0,0,0,0,0,0,0,1,Rule 4,Ciudad De Mexico,MX
 44110,man,0.5,0.5,-0.25,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 130452,woman,0.25,-0.5,-0.25,0,0,0,0,0,0,0,2,Rule 1,Ciudad de México,MX
-834746,,0.5,1.25,0.25,0,0,0,0,0,0,0,2,Rule 3,México,MX
+834746,,0.5,1.25,0.25,0,0,0,0,0,0,0,2,Rule 3,,
 159886,woman,1.0,0.5,0.75,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 70123,man,0.75,1.0,0.25,0,0,1,0,1,0,0,2,Rule 3,Miguel Hidalgo,MX
 188086,woman,0.75,-0.25,1.25,0,0,0,0,1,0,0,2,Rule 5,Iztapalapa,MX
@@ -117,12 +117,12 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 622108,woman,1.25,0.5,0.75,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 68669,woman,1.25,2.5,2.25,0,0,0,0,0,0,0,1,Rule 4,Ciudad de México,MX
 513160,man,-1.0,0.0,-0.75,0,0,0,0,1,0,0,0,Rule 0,Cuauhtémoc,MX
-206570,,0.75,-0.25,1.5,0,0,0,0,0,0,0,2,Rule 5,México,MX
+206570,,0.75,-0.25,1.5,0,0,0,0,0,0,0,2,Rule 5,,
 59590,woman,0.25,0.75,1.0,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 72844,man,0.25,-0.25,0.0,0,0,0,0,1,0,0,2,Rule 3,Ciudad de México,MX
 512609,woman,1.0,1.0,0.75,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 13513,man,0.25,0.75,1.0,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
-1073038,,0.0,0.0,0.25,0,0,0,0,0,0,0,2,Rule 3,México,MX
+1073038,,0.0,0.0,0.25,0,0,0,0,0,0,0,2,Rule 3,,
 88951,man,1.25,1.0,0.5,0,0,0,0,0,0,0,2,Rule 3,Ciudad de México,MX
 130893,man,2.5,1.75,2.25,0,0,0,0,1,0,0,1,Rule 4,Ciudad De México,MX
 210970,woman,0.75,0.75,1.25,0,0,0,0,0,0,0,2,Rule 5,Ciudad de México,MX
@@ -131,7 +131,7 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 129504,man,1.0,0.75,0.25,0,0,0,0,0,0,0,2,Rule 3,Mérida,MX
 160310,man,0.25,-0.25,-0.25,0,0,0,0,0,0,0,2,Rule 3,Ciudad De México,MX
 13020,man,0.75,1.5,1.0,0,0,1,0,1,0,0,1,Rule 2,Tecámac,MX
-657,,1.25,0.5,1.0,0,0,0,1,1,0,0,2,Rule 3,México,ES
+657,,1.25,0.5,1.0,0,0,0,1,1,0,0,2,Rule 3,,
 193383,woman,1.5,0.75,0.25,0,0,0,0,0,0,0,2,Rule 3,Loja,EC
 158558,woman,0.75,0.75,1.0,0,0,0,0,0,0,1,2,Rule 3,Carchi,EC
 132124,woman,-0.5,0.0,1.25,0,0,0,0,0,0,0,2,Rule 5,Montevideo,UY
@@ -143,7 +143,7 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 94708,woman,0.0,-0.25,0.5,0,0,0,0,0,0,1,2,Rule 3,Pichincha,EC
 219396,woman,0.5,0.75,0.25,0,0,0,0,0,0,0,2,Rule 3,Pichincha,EC
 343401,woman,0.25,-1.0,0.25,0,0,0,0,0,0,0,2,Rule 1,Galápagos,EC
-181056,,1.0,0.25,0.75,0,0,0,0,0,0,0,2,Rule 3,México,EC
+181056,,1.0,0.25,0.75,0,0,0,0,0,0,0,2,Rule 3,,
 42288,man,0.0,-0.25,-0.25,0,0,0,0,0,0,0,2,Rule 3,Loja,EC
 163709,woman,2.0,1.75,0.75,0,0,0,0,0,0,0,1,Rule 2,Guayas,EC
 90206,woman,0.5,-0.25,-0.5,0,0,0,0,0,0,0,2,Rule 3,Pichincha,EC
@@ -172,13 +172,13 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 214455,woman,-1.25,0.5,1.0,0,0,0,0,0,0,0,2,Rule 2,Herrera,PA
 143080,woman,1.5,1.0,2.0,0,0,0,0,0,0,0,1,Rule 4,Uruguay,UY
 48345,woman,-1.25,0.25,-0.25,0,0,0,0,0,0,0,0,,Pichincha,EC
-122182,,-0.25,-0.25,0.0,0,0,0,0,0,0,0,2,Rule 3,México,PA
+122182,,-0.25,-0.25,0.0,0,0,0,0,0,0,0,2,Rule 3,,
 186267,woman,0.0,0.0,0.25,0,0,0,0,0,0,0,2,Rule 3,Carchi,EC
 250009,woman,-0.25,-0.25,1.25,0,0,0,0,0,0,0,2,Rule 5,Ecuador,EC
-122119,,-0.25,0.0,-1.0,0,0,0,0,0,0,0,0,Rule 0,México,PA
+122119,,-0.25,0.0,-1.0,0,0,0,0,0,0,0,0,Rule 0,,
 63957,woman,-0.25,-0.25,0.25,0,0,0,0,0,0,0,2,Rule 3,Panamá Oeste,PA
 146287,man,2.25,1.75,1.5,0,0,0,0,0,0,0,1,Rule 4,Loja,EC
-131657,,1.0,1.5,1.25,0,0,0,0,0,0,0,1,Rule 4,México,SV
+131657,,1.0,1.5,1.25,0,0,0,0,0,0,0,1,Rule 4,,
 47350,woman,0.5,-0.5,-0.5,0,0,0,0,0,0,0,2,Rule 1,Panamá Oeste,PA
 68921,woman,-1.25,-0.75,-0.75,0,0,0,0,0,1,1,0,Rule 0,"Arraiján, Provincia De Panamá",PA
 43557,woman,1.75,1.75,-0.75,0,0,0,0,0,0,0,1,Rule 0,Manabí,EC
@@ -186,7 +186,7 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 33496,woman,0.75,0.25,0.25,0,0,0,0,0,0,0,2,Rule 3,Bugaba,PA
 135810,woman,-0.25,-0.5,-0.75,0,0,0,0,0,0,0,0,Rule 0,Esmeraldas,EC
 259829,woman,1.25,2.75,0.75,0,0,0,0,0,0,0,1,Rule 2,Manabí,EC
-46126,,0.75,-0.25,0.5,0,0,0,0,0,0,0,2,Rule 3,México,EC
+46126,,0.75,-0.25,0.5,0,0,0,0,0,0,0,2,Rule 3,,
 259087,woman,-1.0,-0.5,0.25,0,0,0,0,0,0,0,0,Rule 1,Los Ríos,EC
 337602,woman,-0.5,0.5,-0.25,0,0,0,0,0,0,0,2,Rule 2,El Oro,EC
 481133,man,-1.0,-1.5,-1.75,0,0,0,0,0,0,0,0,Rule 0,Santa Elena,EC
@@ -200,19 +200,19 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 132571,woman,-0.25,0.0,0.0,0,0,0,0,0,0,0,2,Rule 3,Azuay,EC
 169245,woman,-0.75,-0.5,0.0,0,0,0,0,0,0,0,0,Rule 1,Pichincha,EC
 85302,man,-0.75,-1.0,-0.5,0,0,0,0,0,0,0,0,Rule 1,Cotopaxi,EC
-1327735,,0.0,0.0,0.0,0,0,0,0,0,0,0,2,Rule 3,México,EC
+1327735,,0.0,0.0,0.0,0,0,0,0,0,0,0,2,Rule 3,,
 165401,man,1.75,1.5,0.75,0,0,0,0,0,0,0,1,Rule 2,Loja,EC
 201257,woman,0.25,-1.0,-1.0,0,0,0,0,0,0,0,0,Rule 0,Santo Domingo De Los Tsáchilas,EC
 271984,woman,0.5,1.5,1.25,0,0,0,0,0,0,0,1,Rule 4,Pichincha,EC
-177515,,2.5,2.5,2.75,0,0,0,0,0,0,0,1,Rule 4,México,PA
-1260047,,0.25,0.0,1.0,0,0,0,0,0,0,0,2,Rule 3,México,EC
-80259,,1.0,0.0,-1.5,0,0,0,0,0,0,0,0,Rule 0,México,EC
+177515,,2.5,2.5,2.75,0,0,0,0,0,0,0,1,Rule 4,,
+1260047,,0.25,0.0,1.0,0,0,0,0,0,0,0,2,Rule 3,,
+80259,,1.0,0.0,-1.5,0,0,0,0,0,0,0,0,Rule 0,,
 123708,man,-1.5,-1.75,-2.25,0,0,0,0,0,0,0,0,Rule 0,Pichincha,EC
 100430,man,-0.75,-1.0,-0.25,0,0,0,0,0,0,0,0,Rule 1,Pichincha,EC
 80818,woman,0.25,0.5,2.0,0,0,0,0,0,0,1,2,Rule 5,Santa Elena,EC
 140099,woman,-1.0,-1.0,-0.5,0,0,0,0,0,0,0,0,Rule 1,Pichincha,EC
 195735,woman,-0.25,0.0,0.5,0,0,0,0,0,0,0,2,Rule 3,Morona Santiago,EC
-14149,,-0.5,0.5,0.75,0,0,0,0,0,0,0,2,Rule 2,México,MX
+14149,,-0.5,0.5,0.75,0,0,0,0,0,0,0,2,Rule 2,,
 190121,man,0.0,0.0,0.0,0,0,0,0,0,0,0,2,Rule 3,Escuintla,GT
 183731,man,0.75,0.5,0.0,0,0,0,0,0,0,0,2,Rule 3,Azuay,EC
 72210,woman,0.5,0.75,0.5,0,0,0,0,1,0,0,2,Rule 3,"Guanajuato, Salamanca",MX
@@ -223,7 +223,7 @@ userid,gender,pedagogia_diff,ciudadania_digital_diff,desarrollo_profesional_diff
 54699,woman,0.25,-0.25,-0.75,0,0,0,0,1,0,0,0,Rule 0,Yucatán,MX
 98555,man,0.0,0.0,0.5,0,0,0,0,0,0,0,2,Rule 3,El Oro,EC
 213093,woman,-1.0,-0.75,-1.75,0,0,0,0,0,0,0,0,Rule 0,Esmeraldas,EC
-5553,,-0.75,0.0,0.25,0,0,0,1,1,0,0,2,,México,EC
+5553,,-0.75,0.0,0.25,0,0,0,1,1,0,0,2,,,
 1422398,man,0.5,-0.75,0.25,0,0,0,0,0,0,0,2,Rule 1,José Narciso Rovirosa,MX
 56040,woman,1.0,0.0,0.25,0,0,0,0,0,0,0,2,Rule 3,Canelones,UY
 256937,man,0.25,0.5,0.75,0,0,1,0,0,0,0,2,Rule 3,La Florida,CL

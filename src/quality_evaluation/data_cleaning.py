@@ -121,7 +121,7 @@ def main():
     output_data_path = base_data_path / "working_data" / "cleaned_data_user_info_data.csv"
     cleaning(input_data_path, output_data_path)
 
-    input_data_path = base_data_path / "moodle_data" / "users.csv"
+    input_data_path = base_data_path / "working_data" / "users_data.csv"
     output_data_path = base_data_path / "working_data" / "cleaned_data_users.csv"
     cleaning(input_data_path, output_data_path)
 

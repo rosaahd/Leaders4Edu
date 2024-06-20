@@ -62,13 +62,18 @@ def load_and_merge_data(working_data_path):
         [
             "educatec_transformed",
             "first_and_last_completion_by_userid",
-            "users_data",
+            "cleaned_data_users",
             "n_courses_per_user_and_school_of_knowledge",
         ],
     )
+
+    # Ensure 'userid' is the same type in all dataframes (convert to string)
+    for df_name in data_files:
+        data_files[df_name]['userid'] = data_files[df_name]['userid'].astype(str)
+
     df = pd.merge(
         data_files["educatec_transformed"],
-        data_files["users_data"],
+        data_files["cleaned_data_users"],
         on="userid",
         how="left",
     )

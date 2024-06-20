@@ -1195,8 +1195,8 @@ def main():
 
     # Read CSV users.csv
     users = pd.read_csv(working_data_path / "cleaned_data_users.csv")
-    users = users[["id", "city", "country"]]
-    users.rename(columns={"id": "userid"}, inplace=True)
+    users = users[["userid", "city", "country"]]
+    #users.rename(columns={"id": "userid"}, inplace=True)
     merged_df = pd.merge(merged_df, users, on="userid", how="left")
     handler.save_to_csv(merged_df, clustering_data_path / "dataset_with_results2.csv")
 
