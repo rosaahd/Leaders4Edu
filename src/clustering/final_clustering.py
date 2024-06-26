@@ -5,15 +5,14 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from sklearn.cluster import KMeans
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.mixture import GaussianMixture
+from sklearn.svm import SVC
 from sklearn.metrics import silhouette_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 from sklearn.decomposition import PCA
-from sklearn.tree import _tree
 from sklearn.model_selection import cross_val_score
+
 
 # --------------------------------------------------------------------------------------------------------- #
 # Data Cleaning
@@ -42,19 +41,6 @@ class DataCleaner:
         self.df = self.df.dropna()
         print(f"Shape after dropping invalid rows: {self.df.shape}")
 
-    '''
-    def normalize_numerical_columns(self):
-        """
-        Normalize numerical columns to have values between 0 and 1.
-        """
-        print(f"Initial shape before normalizing numerical columns: {self.df.shape}")
-        numerical_cols = self.df.select_dtypes(include=[np.number]).columns
-        self.df[numerical_cols] = self.df[numerical_cols].apply(
-            lambda x: (x - x.min()) / (x.max() - x.min())
-        )
-        print(f"Shape after normalizing numerical columns: {self.df.shape}")
-    '''
-
     def handle_remaining_nans(self):
         """
         Handle remaining NaNs by imputing or dropping.
@@ -76,7 +62,6 @@ class DataCleaner:
         """
         self.remove_duplicates()
         self.drop_invalid_rows()
-        # self.normalize_numerical_columns()
         self.handle_remaining_nans()
         return self.df
 
@@ -228,7 +213,7 @@ class Clusterer:
         )  # DataFrame containing features to be clustered
         self.moodle_ids = df["userid"].values  # List of moodle ids
         self.optimal_clusters = None  # Optimal number of clusters
-        self.kmeans = None  # KMeans model
+        self.gmm = None  # Gaussian Mixture Model
         self.final_df = None  # Final DataFrame containing features and cluster labels
 
         # Print message to indicate start of clustering
@@ -243,35 +228,35 @@ class Clusterer:
         silhouette_scores = []  # List to store silhouette scores for each cluster
         # Loop over all clusters
         for k in iters:
-            kmeans_model = KMeans(
-                n_clusters=k, init="k-means++", n_init=10, random_state=0
+            gmm_model = GaussianMixture(
+                n_components=k, covariance_type='full', random_state=0
             ).fit(
                 self.df
-            )  # Fit the KMeans model to the data
+            )  # Fit the GMM model to the data
+            cluster_labels = gmm_model.predict(self.df)
             silhouette_scores.append(
-                silhouette_score(self.df, kmeans_model.labels_, metric="euclidean")
+                silhouette_score(self.df, cluster_labels, metric="euclidean")
             )  # Calculate the silhouette score and append to the list
         n_clusters = silhouette_scores.index(max(silhouette_scores)) + 2
         if n_clusters == 2:
             n_clusters = 3
         self.optimal_clusters = n_clusters  # Store the optimal number of clusters
 
-    def apply_kmeans_clustering(self):
+    def apply_gmm_clustering(self):
         """
-        Perform KMeans clustering using the optimal number of clusters.
+        Perform GMM clustering using the optimal number of clusters.
         """
-        self.kmeans = KMeans(
-            n_clusters=self.optimal_clusters,
-            init="k-means++",
-            n_init=10,
+        self.gmm = GaussianMixture(
+            n_components=self.optimal_clusters,
+            covariance_type='full',
             random_state=0,
         ).fit(
             self.df
-        )  # Fit the KMeans model to the data
+        )  # Fit the GMM model to the data
         self.final_df = self.df.copy()  # Create a copy of the DataFrame
         self.final_df[
             "cluster"
-        ] = self.kmeans.labels_  # Add the cluster labels to the DataFrame
+        ] = self.gmm.predict(self.df)  # Add the cluster labels to the DataFrame
         self.final_df["userid"] = self.moodle_ids  # Add the moodle ids to the DataFrame
 
     def print_statistics(self, initial_count, final_count):
@@ -303,7 +288,7 @@ class Clusterer:
         Perform clustering and print various statistics.
         """
         initial_count = self.df.shape[0]
-        self.apply_kmeans_clustering()
+        self.apply_gmm_clustering()
         final_count = self.final_df.shape[0]
         self.print_statistics(initial_count, final_count)
 
@@ -362,16 +347,14 @@ class FeatureIdentifier:
     @staticmethod
     def train_and_evaluate_model(X_train, y_train, X, y):
         """
-        Train a RandomForestClassifier and get metrics.
+        Train an SVC model and get metrics.
         :param X_train: DataFrame - Training feature set
         :param y_train: Series - Training target set
         :param X: DataFrame - Full feature set
         :param y: Series - Full target set
         :return: Tuple - F1 score and feature importances
         """
-        model = RandomForestClassifier(
-            random_state=0
-        )  # Initialize the RandomForestClassifier
+        model = SVC(kernel='linear', random_state=0)  # Initialize the SVC model
         model.fit(X_train, y_train)  # Fit the model to the training data
         cv_f1_scores = cross_val_score(
             model, X, y, cv=10, scoring="f1_macro"
@@ -382,7 +365,7 @@ class FeatureIdentifier:
         return (
             cv_f1_scores.mean(),
             cv_accuracy_scores.mean(),
-            model.feature_importances_,
+            model.coef_[0],
         )  # Return the F1 score and feature importances
 
     def identify_importance(self):
@@ -548,410 +531,6 @@ class FeatureIdentifier:
 
 
 # --------------------------------------------------------------------------------------------------------- #
-# Decision Tree
-# --------------------------------------------------------------------------------------------------------- #
-class DecisionTree:
-    """
-    Class to perform decision tree classification on the clusters and extract rules.
-    """
-
-    def __init__(self, df, mapping_dicts):
-        """
-        Inicializa la clase DecisionTreeRefactored.
-        :param df: DataFrame - DataFrame original
-        :param mapping_dicts: dict - Diccionario de mapeo para variables categóricas
-        """
-        self.cluster_all_rules = {}  # Dictionary to store all rules for each cluster
-        self.all_rules = {}  # Dictionary to store all rules
-        self.final_df = (
-            None  # Final DataFrame containing features, cluster labels, and rules
-        )
-        self.cluster_rules_map = {}  # Dictionary to map clusters to rules
-        self.leaf_cluster_map = {}  # Dictionary to map leaf nodes to clusters
-        self.model = None  # DecisionTreeClassifier model
-        self.df = df.drop(
-            "userid", axis=1
-        )  # DataFrame containing features, cluster labels, and rules
-        self.mapping_dicts = mapping_dicts  # Dictionary containing mapping dictionaries for categorical columns
-
-        # Print message to indicate start of decision tree classification
-        print("-- Decision Tree Classification --\n")
-
-        # Print columns to use in the decision tree
-        print("Columns to use in the decision tree:")
-        print(self.df.columns, "\n")
-
-    def prepare_data(self):
-        """
-        Prepare the data for training the model.
-        :return: Tuple - Training and testing sets
-        """
-        X = self.df.drop(["cluster"], axis=1)  # Drop the cluster column
-        y = self.df["cluster"]  # Get the cluster column
-        return train_test_split(
-            X, y, test_size=0.3, stratify=y, random_state=0
-        )  # Split the data into train and test
-
-    def train_model(self):
-        """
-        Train a DecisionTreeClassifier model.
-        """
-        (
-            X_train,
-            X_test,
-            y_train,
-            y_test,
-        ) = self.prepare_data()  # Prepare the data for training
-        self.model = DecisionTreeClassifier(
-            random_state=0
-        )  # Initialize the DecisionTreeClassifier
-        self.model.fit(X_train, y_train)  # Fit the model to the training data
-        self.calculate_f1_score(
-            X_train, y_train
-        )  # Calculate the F1 score for the training data
-
-    def calculate_f1_score(self, X, y):
-        """
-        Calculate the F1 score for the model.
-        :param X: pd.DataFrame - Feature set
-        :param y: pd.Series - Target set
-        """
-        cv_f1_scores = cross_val_score(
-            self.model, X, y, cv=10, scoring="f1_macro"
-        )  # Get the F1 scores
-        cv_accuracy_scores = cross_val_score(
-            self.model, X, y, cv=10, scoring="accuracy"
-        )  # Get the accuracy scores
-        avg_f1_score = cv_f1_scores.mean()  # Calculate the average F1 score
-        avg_accuracy_score = (
-            cv_accuracy_scores.mean()
-        )  # Calculate the average accuracy score
-        print(f"Accuracy: {round(avg_accuracy_score, 4)}")
-        print(f"F1 score: {round(avg_f1_score, 4)}")
-
-    def plot_tree(self, save_path):
-        """
-        Plot the decision tree and save it to a file.
-        :param save_path: str - Path to save the decision tree
-        :return: None
-        """
-        fig, ax = plt.subplots(figsize=(40, 20))  # Initialize the figure and axes
-        plot_tree(
-            self.model,
-            filled=True,
-            feature_names=self.df.drop("cluster", axis=1).columns.tolist(),
-            class_names=[str(i) for i in sorted(self.model.classes_)],
-            rounded=True,
-            proportion=True,
-            fontsize=10,
-            ax=ax,
-        )  # Plot the decision tree
-
-        ax.text(
-            0,
-            -0.1,
-            "Disclaimer: The color coding used to represent classes in this decision tree "
-            "visualization is independent of the color scheme applied in the PCA scatter plot.\n\n"
-            "It is imperative to note that the numerical identifiers for leaf nodes in this "
-            "decision tree directly map to the cluster indices, but the associated colors do "
-            "not maintain consistency across different visual representations.",
-            style="italic",
-            fontsize=10,
-            transform=ax.transAxes,
-        )  # Note for the reader
-
-        # Title, label, and save
-        ax.set_title("Decision Tree for Clustering", fontsize=16)
-        ax.set_xlabel("Features", fontsize=14)
-        ax.set_ylabel("Clusters", fontsize=14)
-        plt.savefig(save_path, format="svg")
-
-    def recurse_extract_rules(self, node, rules):
-        """
-        Recursively extract the rules from the decision tree.
-        :param node: int - Current node
-        :param rules: list - List of rules
-        """
-        tree_ = self.model.tree_  # Get the decision tree
-        feature_names = self.df.drop(
-            "cluster", axis=1
-        ).columns.tolist()  # Get the feature names
-
-        # Check if the current node is a leaf node
-        if tree_.feature[node] != _tree.TREE_UNDEFINED:
-            name = feature_names[tree_.feature[node]]  # Get the feature name
-            threshold = tree_.threshold[node]  # Get the threshold value
-            self.recurse_extract_rules(
-                tree_.children_left[node], rules + [f"{name} <= {threshold}"]
-            )  # Recurse
-            self.recurse_extract_rules(
-                tree_.children_right[node], rules + [f"{name} > {threshold}"]
-            )  # Recurse
-        # If the current node is a leaf node, extract the rules
-        else:
-            leaf_cluster = tree_.value[node].argmax()  # Get the leaf cluster
-            self.leaf_cluster_map[
-                node
-            ] = leaf_cluster  # Map the leaf node to the leaf cluster
-            self.all_rules[node] = rules  # Store the rules
-            self.cluster_all_rules.setdefault(leaf_cluster, []).append(
-                rules
-            )  # Store the rules for the leaf cluster
-
-    def extract_rules(self):
-        """
-        Extract the rules from the decision tree.
-        """
-        self.recurse_extract_rules(0, [])  # Recursively extract the rules
-
-    def print_rules(self):
-        """
-        Print the rules for each cluster.
-        """
-        print("\nRules for each cluster:\n")
-        # Loop over all clusters
-        for cluster, rules in self.cluster_all_rules.items():
-            print(f"\tCluster {cluster}:")
-            for rule in rules:
-                print(f"\t\t{rule}")  # Print the rules
-            print()
-
-    def apply_rules_and_get_values(self, df, rules, target_column):
-        """
-        Apply the rules to the DataFrame and get the unique values for the target column.
-        :param df: pd.DataFrame - DataFrame to apply the rules to
-        :param rules: list - List of rules
-        :param target_column: str - Name of the target column
-        :return: list - List of unique values for the target column
-        """
-        temp_df = df.copy()
-        # Loop over all rules
-        for rule in rules:
-            if isinstance(rule, str):  # Check if 'rule' is a string
-                feature, operator, value = rule.split(" ")  # Split the rule
-                if operator == "<=":  # Check the operator
-                    temp_df = temp_df[
-                        temp_df[feature] <= float(value)
-                    ]  # Apply the rule
-                else:
-                    temp_df = temp_df[temp_df[feature] > float(value)]  # Apply the rule
-        return [
-            self.mapping_dicts.get(target_column, {}).get(
-                code, code
-            )  # Get the mapped value
-            for code in temp_df[target_column].unique()  # Get the unique values
-        ]
-
-    @staticmethod
-    def evaluate_rule(rules, row):
-        """
-        Evaluate if a given set of rules applies to a specific row.
-        :param rules: list - List of rules
-        :param row: pd.Series - Single row from DataFrame
-        :return: bool - True if rules apply, False otherwise
-        """
-        for rule in rules:
-            feature, operator, value = rule.split(" ")
-            if operator == "<=":
-                if row[feature] > float(value):
-                    return False
-            else:
-                if row[feature] <= float(value):
-                    return False
-        return True
-
-    def add_rules_to_df(self, clusterer):
-        """
-        Add the rule indices to the DataFrame.
-        :param clusterer: Clusterer - Clusterer object
-        :return: None
-        """
-        self.df["rule_index"] = None  # Initialize the 'rule_index' column
-
-        # Apply the rules to each row of the DataFrame
-        def apply_rules(row):
-            cluster = row["cluster"]  # Get the cluster
-            # Get the rules for this cluster
-            rules_list = self.cluster_all_rules.get(cluster, [])
-            if rules_list:  # Check if rules exist
-                for idx, rules in enumerate(rules_list):
-                    if self.evaluate_rule(rules, row):  # Call to evaluate_rule
-                        row["rule_index"] = "Rule " + str(idx)  # Add the rule index
-                        break  # Exit the loop once a matching rule is found
-            return row
-
-        self.final_df = clusterer.final_df.apply(apply_rules, axis=1)
-
-    def save_rules_to_csv(self, save_path):
-        """
-        Save the rules and corresponding clusters to a CSV file.
-        :param save_path: str - Path to save the CSV file
-        :return: None
-        """
-        # Initialize an empty list to store the rules and clusters
-        rule_cluster_data = []
-
-        # Iterate through the dictionary of cluster rules
-        for cluster, rules_list in self.cluster_all_rules.items():
-            for idx, rules in enumerate(rules_list):
-                # Convert the list of rules to a single string for easier storage
-                rule_str = ", ".join(rules)
-
-                # Append the rule and its corresponding cluster to the list
-                rule_cluster_data.append(
-                    {"Cluster": cluster, "Rule": "Rule " + str(idx), "Rules": rule_str}
-                )
-
-        # Create a DataFrame from the list of rules and clusters
-        rule_cluster_df = pd.DataFrame(rule_cluster_data)
-
-        # Save the DataFrame to a CSV file
-        rule_cluster_df.to_csv(save_path, index=False)
-
-    def save_cluster_variables(self, data_preprocessor, feature_identifier, save_path):
-        """
-        Save the cluster variables to a JSON file.
-        :param data_preprocessor: DataPreprocessor - DataPreprocessor object
-        :param feature_identifier: FeatureIdentifier - FeatureIdentifier object
-        :param save_path: str - Path to save the JSON file
-        :return: None
-        """
-        # Initialize a dictionary to store data for each cluster
-        cluster_data = {
-            "cluster": [],  # Cluster index
-            "n_users": [],  # Number of users in the cluster
-            "feature_importance": [],  # Feature importance
-            "rules": [],  # Rules
-            "categorical_variables": [],  # Categorical variables
-            "numerical_variables": [],  # Numerical variables
-        }
-
-        numerical_variables_info = {
-            "cluster": [],
-            "feature": [],
-            "mean": [],
-            "std": [],
-        }
-        # Loop over all clusters
-        for cluster, rules in self.cluster_all_rules.items():
-            # Initialize a dictionary to store the row data
-            row_data = {
-                "cluster": cluster,
-                "n_users": self.df[self.df["cluster"] == cluster].shape[
-                    0
-                ],  # Get the number of users in the cluster
-                "feature_importance": {},
-                "rules": {},
-                "categorical_variables": {},
-                "numerical_variables": {},
-            }
-
-            # Add the rules to the row data
-            for i, rule in enumerate(rules):
-                row_data["rules"][f"rule_{i}"] = rule  # Add the rule
-
-            # Loop over all categorical variables
-            for cat_var, mapping_dict in self.mapping_dicts.items():
-                unique_values = [
-                    self.mapping_dicts.get(cat_var, {}).get(
-                        code, code
-                    )  # Get the mapped value
-                    for code in self.apply_rules_and_get_values(
-                        self.df, rules, cat_var
-                    )  # Get the unique values
-                ]
-                row_data["categorical_variables"][cat_var] = unique_values
-
-            # Loop over categorical variables that were one-hot encoded
-            for cat_var in data_preprocessor.categorical_columns_hot_encoded:
-                # Check if any columns match the regex pattern
-                matching_columns = [
-                    col
-                    for col in self.df.columns
-                    if re.match(
-                        f"{re.escape(cat_var)}_.+",
-                        col,  # Check if the column matches the regex pattern
-                    )
-                    and (
-                        self.df[self.df["cluster"] == cluster][col]
-                        != 0  # Check if the column is non-zero
-                    ).any()
-                ]
-
-                if matching_columns:
-                    unique_values = [
-                        col.split("_")[1]
-                        for col in matching_columns
-                        if col.startswith(cat_var)
-                    ]  # Get the unique values
-                    row_data["categorical_variables"][
-                        cat_var
-                    ] = unique_values  # Add the unique values
-
-            # Calculate the hot encoded categorical variables for this cluster
-            matching_columns = pd.Index([])  # Initialize an empty Index
-            for cat_var in data_preprocessor.categorical_columns_hot_encoded:
-                new_columns = pd.Index(
-                    [
-                        col
-                        for col in self.df.columns
-                        if re.match(f"{re.escape(cat_var)}_.+", col)
-                    ]
-                )  # Get the columns that match the regex pattern
-                matching_columns = matching_columns.append(
-                    new_columns
-                )  # Append the columns to the Index
-
-            # Loop over all numerical variables
-            non_cat_vars = (
-                set(self.df.columns)
-                - set(self.mapping_dicts.keys())
-                - set(matching_columns)
-                - {"cluster", "rule_index"}
-            )  # Get the numerical variables
-            for non_cat_var in non_cat_vars:
-                # Calculate descriptive statistics for this non-categorical variable
-                mean_value = np.mean(
-                    self.df[self.df["cluster"] == cluster][non_cat_var]
-                )
-                std_value = np.std(self.df[self.df["cluster"] == cluster][non_cat_var])
-                row_data["numerical_variables"][f"{non_cat_var}_mean"] = mean_value
-                row_data["numerical_variables"][f"{non_cat_var}_std"] = std_value
-                numerical_variables_info["cluster"].append(cluster)
-                numerical_variables_info["feature"].append(f"{non_cat_var}_mean")
-                numerical_variables_info["mean"].append(mean_value)
-                numerical_variables_info["std"].append(std_value)
-
-            # Save the numerical variables to a CSV file
-            numerical_variables_df = pd.DataFrame(numerical_variables_info)
-
-            # Add the feature importance to the row data
-            for feature, importance in sorted(
-                feature_identifier.feature_importance_dict[
-                    f"cluster_{cluster}"
-                ].items(),
-                key=lambda x: x[1],
-                reverse=True,
-            ):
-                row_data["feature_importance"][feature] = importance
-
-            # Append the row data to the cluster_data dictionary
-            for key, value in row_data.items():  # Loop over all keys in the row data
-                cluster_data[key].append(
-                    value
-                )  # Append the value to the cluster_data dictionary
-
-        # Convert cluster_data dictionary to a DataFrame
-        cluster_variables_df = pd.DataFrame(cluster_data)
-
-        # Make sure the 'cluster' column is integer type
-        cluster_variables_df["cluster"] = cluster_variables_df["cluster"].astype(int)
-
-        # Save DataFrame to JSON, tabulating it in a more organized way
-        cluster_variables_df.to_json(save_path, orient="records", indent=4)
-
-
-# --------------------------------------------------------------------------------------------------------- #
 # Visualization
 # --------------------------------------------------------------------------------------------------------- #
 class Visualizer:
@@ -1026,17 +605,17 @@ class SaveData:
         """
         self.df = df
 
-    def merge_original_data(self, data_preprocessor, decision_tree):
+    def merge_original_data(self, data_preprocessor, feature_identifier):
         """
         Merge the original data with the cluster labels.
         :param data_preprocessor: DataPreprocessor - DataPreprocessor object
-        :param decision_tree: DecisionTree - DecisionTree object
+        :param feature_identifier: FeatureIdentifier - FeatureIdentifier object
         :return: None
         """
         # Merge the original data with the cluster labels
         self.df = pd.merge(
             data_preprocessor.original_df,
-            decision_tree.final_df[["userid", "cluster", "rules"]],
+            feature_identifier.final_df[["userid", "cluster"]],
             on="userid",
             how="right",
         )
@@ -1065,7 +644,7 @@ class DataHandler:
     @staticmethod
     def merge_dataframes(original_df, final_df, on="userid", how="right"):
         return pd.merge(
-            original_df, final_df[["userid", "cluster", "rule_index"]], on=on, how=how
+            original_df, final_df[["userid", "cluster"]], on=on, how=how
         )
 
     @staticmethod
@@ -1106,29 +685,6 @@ class DataHandler:
         return feature_identifier
 
     @staticmethod
-    def run_decision_tree(
-        final_df,
-        mapping_dicts,
-        data_preprocessor,
-        feature_identifier,
-        clusterer,
-        clustering_data_path=Path.cwd() / "data/clustering",
-    ):
-        decision_tree = DecisionTree(final_df, mapping_dicts)
-        decision_tree.train_model()
-        decision_tree.extract_rules()
-        decision_tree.print_rules()
-        decision_tree.add_rules_to_df(clusterer)
-        decision_tree.save_cluster_variables(
-            data_preprocessor,
-            feature_identifier,
-            clustering_data_path / "cluster_variables.json",
-        )
-        decision_tree.save_rules_to_csv(clustering_data_path / "rules.csv")
-        decision_tree.plot_tree(clustering_data_path / "images/decision_tree.svg")
-        return decision_tree
-
-    @staticmethod
     def run_visualization(
         final_df, clustering_data_path=Path.cwd() / "data/clustering"
     ):
@@ -1167,7 +723,7 @@ def main():
     # Verificación del DataFrame limpiado
     print(f"Shape of cleaned_df: {cleaned_df.shape}")
     print(f"Cleaned DataFrame Head:\n{cleaned_df.head()}")
-    
+
     # Check for NaNs
     if cleaned_df.isna().any().any():
         print("DataFrame contains NaNs after cleaning!")
@@ -1178,30 +734,23 @@ def main():
     feature_identifier = handler.run_feature_identification(
         clusterer, data_preprocessor
     )
-    decision_tree = handler.run_decision_tree(
-        feature_identifier.final_df,
-        data_preprocessor.mapping_dicts,
-        data_preprocessor,
-        feature_identifier,
-        clusterer,
-    )
     handler.run_visualization(clusterer.final_df)
 
     # Merge original data with clustering results
     merged_df = handler.merge_dataframes(
-        data_preprocessor.original_df, decision_tree.final_df
+        data_preprocessor.original_df, feature_identifier.final_df
     )
     merged_df["cluster"] = merged_df["cluster"].astype(int)
 
     # Read CSV users.csv
     users = pd.read_csv(working_data_path / "cleaned_data_users.csv")
     users = users[["userid", "city", "country"]]
-    #users.rename(columns={"id": "userid"}, inplace=True)
     merged_df = pd.merge(merged_df, users, on="userid", how="left")
     handler.save_to_csv(merged_df, clustering_data_path / "dataset_with_results2.csv")
 
     # Print end message
     print("-- Finished --\n")
+
 
 # --------------------------------------------------------------------------------------------------------- #
 # Run
