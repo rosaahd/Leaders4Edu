@@ -4,6 +4,7 @@
 #     - data/working_data/educatec_transformed.csv
 #     - data/working_data/first_and_last_completion_by_userid.csv
 #     - data/working_data/users_data.csv
+#     - data/working_data/n_courses_per_user_and_school_of_knowledge.csv
 # Output:
 #     - data/working_data/clustering_dataset.csv
 # Format of the csv file:
@@ -11,7 +12,6 @@
 
 import pandas as pd
 from pathlib import Path
-
 
 def load_data(data_path, columns_to_parse=None, files_to_load=None):
     """
@@ -42,13 +42,12 @@ def load_data(data_path, columns_to_parse=None, files_to_load=None):
             columns_to_parse = [col for col in columns_to_parse if col in df.columns]
         # Parse columns_to_parse as datetime
         if columns_to_parse:
-            df[columns_to_parse] = df[columns_to_parse].apply(pd.to_datetime)
+            df[columns_to_parse] = df[columns_to_parse].apply(pd.to_datetime, errors='coerce')
         # Add dataframe to the dict
         dfs[file.stem] = df
 
     # Return the dict
     return dfs
-
 
 def load_and_merge_data(working_data_path):
     """
@@ -83,8 +82,13 @@ def load_and_merge_data(working_data_path):
         on="userid",
         how="left",
     )
+    df = pd.merge(
+        df,
+        data_files["first_and_last_completion_by_userid"],
+        on="userid",
+        how="left",
+    )
     return df
-
 
 def filter_users_with_two_evaluations(df):
     """
@@ -94,7 +98,6 @@ def filter_users_with_two_evaluations(df):
     """
     df["date2"] = df["date2"].apply(lambda x: -1 if x == "-1" else x)
     return df[df["date2"] != -1]
-
 
 def drop_and_transform_columns(df):
     df = df.drop(["city", "date1", "date2"], axis=1)
@@ -108,7 +111,6 @@ def drop_and_transform_columns(df):
                 continue
         df[col] = df[col].apply(lambda x: None if x == -1 else x)
     return df
-
 
 def calculate_diffs(df, categories):
     """
@@ -166,6 +168,24 @@ def calculate_diffs(df, categories):
 
     return df_final
 
+def calculate_total_and_average_time(df):
+    """
+    Calculate total_time and average_time for each user
+    :param df: pd.DataFrame - dataframe with the data
+    :return: pd.DataFrame - dataframe with total_time and average_time columns added
+    """
+    df['first_course_module_completion'] = pd.to_datetime(df['first_course_module_completion'], errors='coerce')
+    df['last_course_module_completion'] = pd.to_datetime(df['last_course_module_completion'], errors='coerce')
+
+    df = df.dropna(subset=['first_course_module_completion', 'last_course_module_completion'])
+
+    total_time = df.groupby('userid').apply(lambda x: (x['last_course_module_completion'].max() - x['first_course_module_completion'].min()).days)
+    average_time = df.groupby('userid').apply(lambda x: (x['last_course_module_completion'] - x['first_course_module_completion']).mean().days)
+
+    df['total_time'] = df['userid'].map(total_time)
+    df['average_time'] = df['userid'].map(average_time)
+
+    return df
 
 def main():
     """
@@ -203,22 +223,41 @@ def main():
     clustering_df = drop_and_transform_columns(clustering_df)
     clustering_df = calculate_diffs(clustering_df, categories)
 
-    columns_to_keep = (
+    # Calcular total_time y average_time
+    clustering_df = calculate_total_and_average_time(clustering_df)
+
+    # Eliminar filas con NaN en columnas de fechas
+    clustering_df = clustering_df.dropna(subset=["first_course_module_completion", "last_course_module_completion"])
+
+    # Verificar que las columnas existen antes de seleccionar
+    expected_columns = (
         ["userid", "gender"]
         + [col for col in clustering_df.columns if "_diff" in col]
         + [col for col in clustering_df.columns if "n_courses" in col]
+        + ["total_time", "average_time"]
     )
+    print("\nExpected Columns:\n\n" + str(expected_columns))
+
+    # Seleccionar las columnas existentes
+    columns_to_keep = [col for col in expected_columns if col in clustering_df.columns]
+    print("\nColumns to Keep:\n\n" + str(columns_to_keep))
+
     clustering_df = clustering_df[columns_to_keep]
 
     # Convert n_courses to int
     for col in clustering_df.columns:
         if "n_courses" in col:
-            # Replace NaN with 0
             clustering_df[col].fillna(0, inplace=True)
             clustering_df[col] = clustering_df[col].astype("int")
 
+    # Eliminar filas duplicadas por 'userid'
+    clustering_df = clustering_df.drop_duplicates(subset=['userid'])
+
+    # Guardar el DataFrame final en un archivo CSV
     clustering_df.to_csv(clustering_data_path / "clustering_dataset.csv", index=False)
 
+    print("\nData successfully saved to clustering_dataset.csv")
 
 if __name__ == "__main__":
     main()
+

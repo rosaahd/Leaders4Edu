@@ -1,10 +1,5 @@
 Cluster,Rule,Rules
-0,Rule 0,"n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital <= 0.5, n_courses_escuela_formadores <= 0.5"
-2,Rule 0,"n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital <= 0.5, n_courses_escuela_formadores > 0.5"
-2,Rule 1,"n_courses_escuela_innovacion > 0.5, n_courses_escuela_pensamiento > 0.5"
-1,Rule 0,"n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital > 0.5"
-1,Rule 1,"n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento > 0.5"
-1,Rule 2,"n_courses_escuela_innovacion > 0.5, n_courses_escuela_pensamiento <= 0.5, gender <= 1.5"
-1,Rule 3,"n_courses_escuela_innovacion > 0.5, n_courses_escuela_pensamiento <= 0.5, gender > 1.5, n_courses_escuela_formadores <= 0.5, n_courses_escuela_digital <= 0.5"
-1,Rule 4,"n_courses_escuela_innovacion > 0.5, n_courses_escuela_pensamiento <= 0.5, gender > 1.5, n_courses_escuela_formadores <= 0.5, n_courses_escuela_digital > 0.5"
-1,Rule 5,"n_courses_escuela_innovacion > 0.5, n_courses_escuela_pensamiento <= 0.5, gender > 1.5, n_courses_escuela_formadores > 0.5"
+1,Rule 0,total_time <= 42.5
+2,Rule 0,"total_time > 42.5, total_time <= 79.0, average_time <= 33.0"
+3,Rule 0,"total_time > 42.5, total_time <= 79.0, average_time > 33.0"
+0,Rule 0,"total_time > 42.5, total_time > 79.0"
