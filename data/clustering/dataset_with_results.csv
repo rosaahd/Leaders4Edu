@@ -1,0 +1,229 @@
+userid,cluster1,cluster2,new_cluster,city,country
+94146,0,2,A0,Otavalo,CL
+59690,1,2,A2,Benito Juárez,MX
+513048,1,1,A1,Benito Juárez,MX
+513150,1,2,A2,Ecatepec De Morelos,MX
+513078,2,2,A6,Álvaro Obregón,MX
+14646,1,2,A2,Miguel Hidalgo,MX
+88917,1,2,A2,Ciudad de México,MX
+188086,1,2,A2,Iztapalapa,MX
+59681,2,2,A6,Miguel Hidalgo,MX
+513160,1,2,A2,Cuauhtémoc,MX
+159883,2,2,A6,Ciudad De México,MX
+13020,1,2,A2,Tecámac,MX
+657,0,2,A0,,
+94708,1,2,A2,Pichincha,EC
+68921,1,1,A1,"Arraiján, Provincia De Panamá",PA
+626316,3,2,A7,Irapuato,MX
+80818,0,2,A0,Santa Elena,EC
+72210,1,2,A2,"Guanajuato, Salamanca",MX
+166988,1,1,A1,Mérida,MX
+54699,1,1,A1,Yucatán,MX
+5553,1,2,A2,,
+256937,3,2,A7,La Florida,CL
+527,20,2,A5,México,MX
+120370,20,0,A3,Napo,EC
+637055,20,0,A3,Azuay,EC
+736740,20,0,A3,Pichincha,EC
+70816,20,0,A3,Pichincha,EC
+151903,20,0,A3,Guayas,EC
+725622,20,0,A3,Morona Santiago,EC
+733321,20,0,A3,Pastaza,EC
+691629,20,0,A3,Guayas,EC
+19698,20,0,A3,Orellana,EC
+74390,20,0,A3,Galápagos,EC
+131818,20,0,A3,Sucumbíos,EC
+447242,20,0,A3,Sucumbíos,EC
+197203,20,0,A3,Pichincha,EC
+170076,20,0,A3,Pichincha,EC
+48556,20,0,A3,Pichincha,EC
+121023,20,0,A3,Orellana,EC
+1416251,20,0,A3,Zacatelco,MX
+750093,20,0,A3,Quito,EC
+219017,20,0,A3,Pichincha,EC
+126255,20,0,A3,Santa Elena,EC
+541699,20,0,A3,Limache,CL
+108876,20,0,A3,Cañar,EC
+69758,20,0,A3,Bolívar,EC
+213088,20,0,A3,Esmeraldas,EC
+759834,20,0,A3,Santa Elena,EC
+72758,20,0,A3,Imbabura,EC
+19762,20,0,A3,Bolívar,EC
+184867,20,0,A3,Bolívar,EC
+127738,20,0,A3,Sucumbíos,EC
+127746,20,0,A3,Sucumbíos,EC
+48307,20,0,A3,Pichincha,EC
+574605,20,0,A3,Santa Elena,EC
+169822,20,1,A4,Pichincha,EC
+144004,20,0,A3,Cañar,EC
+149325,20,0,A3,Ciudad de México,MX
+418131,20,0,A3,Pichincha,EC
+413611,20,0,A3,Pichincha,EC
+191198,20,0,A3,Guayas,EC
+18155,20,0,A3,Guayas,EC
+146343,20,0,A3,Pichincha,EC
+398463,20,0,A3,Napo,EC
+213766,20,2,A5,Guayaquil,EC
+830656,20,0,A3,,
+131162,20,0,A3,Ciudad de México,MX
+97589,20,0,A3,Ciudad de México,MX
+89024,20,0,A3,Ciudad de México,MX
+211060,20,0,A3,Ciudad de México,MX
+14087,20,0,A3,Ciudad de México,MX
+44044,20,0,A3,Ciudad de México,MX
+131841,20,0,A3,Ciudad de México,MX
+10977,20,0,A3,Ciudad de México,MX
+59629,20,0,A3,Ciudad de México,MX
+627977,20,0,A3,Ciudad de México,MX
+88915,20,0,A3,Ciudad de México,MX
+119404,20,0,A3,Ciudad de México,MX
+622541,20,0,A3,,
+159865,20,0,A3,Ciudad de México,MX
+212687,20,0,A3,Distrito Federal,MX
+119548,20,0,A3,Ciudad de México,MX
+188125,20,0,A3,Ciudad de México,MX
+625500,20,0,A3,Ciudad de México,MX
+14081,20,0,A3,,
+11689,20,0,A3,Ciudad de México,MX
+180044,20,0,A3,Ciudad de México,MX
+210947,20,0,A3,Ciudad de México,MX
+512783,20,0,A3,Ciudad de México,MX
+1405619,20,0,A3,Azcapotzalco,MX
+513304,20,0,A3,Ciudad de México,MX
+59682,20,0,A3,Ciudad de México,MX
+44145,20,0,A3,Ciudad de México,MX
+625419,20,0,A3,Ciudad de México,MX
+44272,20,0,A3,Ciudad de México,MX
+11766,20,0,A3,Ciudad de México,MX
+119594,20,0,A3,Ciudad de México,MX
+89007,20,0,A3,Ciudad de México,MX
+14283,20,0,A3,Ciudad de México,MX
+35822,20,0,A3,Ciudad De México,MX
+160269,20,0,A3,Ciudad de México,MX
+160059,20,0,A3,Ciudad de México,MX
+88914,20,0,A3,Ciudad de México,MX
+11277,20,0,A3,Ciudad de México,MX
+512547,20,0,A3,Ciudad de México,MX
+44306,20,0,A3,Ciudad de México,MX
+10945,20,0,A3,Ciudad de México,MX
+57104,20,0,A3,Ciudad de México,MX
+810470,20,0,A3,Jalisco,MX
+119384,20,0,A3,Ciudad de México,MX
+151731,20,0,A3,Mérida,MX
+159871,20,0,A3,Ciudad de México,MX
+54803,20,0,A3,"Yucatán, Mérida",MX
+54812,20,0,A3,Mérida,MX
+131213,20,0,A3,Ciudad de México,MX
+88973,20,0,A3,,
+59593,20,0,A3,Ciudad de México,MX
+513258,20,0,A3,Ciudad de México,MX
+59617,20,0,A3,Ciudad de México,MX
+187660,20,0,A3,Ciudad De Mexico,MX
+44110,20,0,A3,Ciudad de México,MX
+130452,20,0,A3,Ciudad de México,MX
+834746,20,0,A3,,
+159886,20,0,A3,Ciudad de México,MX
+70123,20,2,A5,Miguel Hidalgo,MX
+14414,20,0,A3,Ciudad de México,MX
+13804,20,0,A3,Azcapotzalco,MX
+93954,20,0,A3,Ciudad de México,MX
+622108,20,0,A3,Ciudad de México,MX
+68669,20,0,A3,Ciudad de México,MX
+206570,20,0,A3,,
+59590,20,0,A3,Ciudad de México,MX
+72844,20,2,A5,Ciudad de México,MX
+512609,20,0,A3,Ciudad de México,MX
+13513,20,0,A3,Ciudad de México,MX
+1073038,20,0,A3,,
+88951,20,0,A3,Ciudad de México,MX
+130893,20,2,A5,Ciudad De México,MX
+210970,20,0,A3,Ciudad de México,MX
+187907,20,0,A3,Ciudad de México,MX
+129504,20,0,A3,Mérida,MX
+160310,20,0,A3,Ciudad De México,MX
+193383,20,0,A3,Loja,EC
+158558,20,2,A5,Carchi,EC
+132124,20,0,A3,Montevideo,UY
+250003,20,0,A3,Ecuador,EC
+143969,20,0,A3,Pichincha,EC
+42175,20,0,A3,Loja,EC
+19484,20,0,A3,Santo Domingo De Los Tsachilas,EC
+191360,20,0,A3,Guayas,EC
+219396,20,0,A3,Pichincha,EC
+343401,20,0,A3,Galápagos,EC
+181056,20,0,A3,,
+42288,20,0,A3,Loja,EC
+163709,20,0,A3,Guayas,EC
+90206,20,0,A3,Pichincha,EC
+298283,20,0,A3,Bolívar,EC
+75083,20,0,A3,Galápagos,EC
+73159,20,0,A3,Guayas,EC
+131564,20,0,A3,Guayas,EC
+43468,20,0,A3,Manabí,EC
+1333617,20,0,A3,Sevilla De Oro,EC
+16543,20,0,A3,Sucumbios,EC
+168018,20,0,A3,Napo,EC
+560726,20,0,A3,Pichincha,EC
+40142,20,0,A3,Guayas,EC
+69418,20,0,A3,Pichincha,EC
+168035,20,0,A3,Napo,EC
+131108,20,0,A3,Cotopaxi,EC
+259084,20,0,A3,Los Ríos,EC
+183726,20,0,A3,Azuay,EC
+123812,20,0,A3,Pichincha,EC
+72060,20,0,A3,Bolívar,EC
+214131,20,0,A3,Guayas,EC
+38058,20,0,A3,El Oro,EC
+212008,20,0,A3,Cotopaxi,EC
+115729,20,0,A3,Herrera,PA
+61488,20,0,A3,Herrera,PA
+214455,20,0,A3,Herrera,PA
+143080,20,0,A3,Uruguay,UY
+48345,20,0,A3,Pichincha,EC
+122182,20,0,A3,,
+186267,20,0,A3,Carchi,EC
+250009,20,0,A3,Ecuador,EC
+122119,20,0,A3,,
+63957,20,0,A3,Panamá Oeste,PA
+146287,20,0,A3,Loja,EC
+131657,20,0,A3,,
+47350,20,0,A3,Panamá Oeste,PA
+43557,20,0,A3,Manabí,EC
+191086,20,0,A3,Guayas,EC
+33496,20,0,A3,Bugaba,PA
+135810,20,0,A3,Esmeraldas,EC
+259829,20,0,A3,Manabí,EC
+46126,20,0,A3,,
+259087,20,0,A3,Los Ríos,EC
+337602,20,0,A3,El Oro,EC
+481133,20,0,A3,Santa Elena,EC
+35176,20,0,A3,Chimborazo,EC
+272193,20,0,A3,Pichincha,EC
+126214,20,0,A3,Santa Elena,EC
+123750,20,0,A3,Pichincha,EC
+45142,20,0,A3,Morona Santiago,EC
+75463,20,0,A3,Imbabura,EC
+132571,20,0,A3,Azuay,EC
+169245,20,0,A3,Pichincha,EC
+85302,20,0,A3,Cotopaxi,EC
+1327735,20,0,A3,,
+165401,20,0,A3,Loja,EC
+201257,20,0,A3,Santo Domingo De Los Tsáchilas,EC
+271984,20,0,A3,Pichincha,EC
+177515,20,0,A3,,
+1260047,20,0,A3,,
+80259,20,0,A3,,
+123708,20,0,A3,Pichincha,EC
+100430,20,0,A3,Pichincha,EC
+140099,20,0,A3,Pichincha,EC
+195735,20,0,A3,Morona Santiago,EC
+14149,20,0,A3,,
+190121,20,0,A3,Escuintla,GT
+183731,20,0,A3,Azuay,EC
+186637,20,2,A5,Celaya,MX
+204544,20,2,A5,Yucatán,MX
+260846,20,0,A3,Mérida,MX
+98555,20,0,A3,El Oro,EC
+213093,20,0,A3,Esmeraldas,EC
+1422398,20,0,A3,José Narciso Rovirosa,MX
+56040,20,0,A3,Canelones,UY

@@ -1,5 +1,9 @@
-Cluster,Rule,Rules
-1,Rule 0,total_time <= 42.5
-2,Rule 0,"total_time > 42.5, total_time <= 79.0, average_time <= 33.0"
-3,Rule 0,"total_time > 42.5, total_time <= 79.0, average_time > 33.0"
-0,Rule 0,"total_time > 42.5, total_time > 79.0"
+new_cluster,rule
+A0,"total_time > 42.5, ciudadania_digital_diff <= 0.625 AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital > 0.5"
+A2,"total_time <= 42.5 AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital > 0.5"
+A1,"total_time <= 42.5 AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital <= 0.5, n_courses_escuela_formadores > 0.5"
+A6,"total_time > 42.5, ciudadania_digital_diff > 0.625, average_time <= 33.0 AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital > 0.5"
+A7,"total_time > 42.5, ciudadania_digital_diff > 0.625, average_time > 33.0 AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital > 0.5"
+A5," AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital > 0.5"
+A3," AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital <= 0.5, n_courses_escuela_formadores <= 0.5"
+A4," AND n_courses_escuela_innovacion <= 0.5, n_courses_escuela_pensamiento <= 0.5, n_courses_escuela_digital <= 0.5, n_courses_escuela_formadores > 0.5"

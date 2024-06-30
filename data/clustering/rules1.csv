@@ -1,0 +1,5 @@
+Cluster,Rule,Rules
+1,Rule 0,total_time <= 42.5
+0,Rule 0,"total_time > 42.5, ciudadania_digital_diff <= 0.625"
+2,Rule 0,"total_time > 42.5, ciudadania_digital_diff > 0.625, average_time <= 33.0"
+3,Rule 0,"total_time > 42.5, ciudadania_digital_diff > 0.625, average_time > 33.0"
